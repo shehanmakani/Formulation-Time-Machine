@@ -1,21 +1,19 @@
 import matplotlib.pyplot as plt
 import os
 
-def generate_stability_chart(time_points, integrity_scores, product_name, filename="docs/stability_curve.png"):
-    """
-    Generates a professional-grade stability plot showing the decay of a formulation.
-    """
+def generate_comparison_chart(months, data_dict, filename="docs/stress_test_comparison.png"):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    plt.style.use('ggplot')
-    plt.figure(figsize=(10, 6))
-    plt.plot(time_points, integrity_scores, color='#2c3e50', linewidth=2.5, marker='o', label="System Integrity %")
-    plt.axhline(y=90, color='#e74c3c', linestyle='--', alpha=0.6, label="90% Potency Threshold")
-    plt.title(f"Predictive Lifecycle Simulation: {product_name}", fontsize=14, fontweight='bold')
-    plt.xlabel("Storage Time (Months)", fontsize=12)
-    plt.ylabel("Overall Integrity Score", fontsize=12)
+    plt.style.use('bmh')
+    plt.figure(figsize=(12, 7))
+    colors = ['#e74c3c', '#27ae60'] 
+    for (label, scores), color in zip(data_dict.items(), colors):
+        plt.plot(months, scores, label=label, color=color, linewidth=3, marker='o')
+    plt.axhline(y=90, color='black', linestyle='--', alpha=0.3)
+    plt.title("Stress Test: Standard Formula vs. Optimized Synergy", fontsize=15, pad=20)
+    plt.xlabel("Months at 40°C (Accelerated)", fontsize=12)
+    plt.ylabel("System Integrity (%)", fontsize=12)
     plt.ylim(0, 105)
-    plt.grid(True, linestyle=':', alpha=0.7)
-    plt.legend()
+    plt.legend(facecolor='white', frameon=True)
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
-    print(f"Chart saved successfully to {filename}")
+    print(f"Comparison chart saved to {filename}")
