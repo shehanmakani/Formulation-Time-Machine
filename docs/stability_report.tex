@@ -1,9 +1,22 @@
-\documentclass[11pt, a4paper]{article}
-\usepackage[a4paper, top=2cm]{geometry}
-\title{Stability Report: V-C Serum}
-\author{Formulation Time Machine}
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+\title{Predictive Kinetic Modeling of L-Ascorbic Acid Stability}
+\author{Shehan Makani \\ \small Formulation Time Machine Project}
+\date{\today}
 \begin{document}
 \maketitle
-\section{Summary}
-Predicted failure at 12 months under 40C.
+\section{Results (Accelerated 40$^{\circ}$C)}
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccccc}
+\toprule
+Month & 0 & 1 & 3 & 6 & 12 & 24 \\ \midrule
+Standard (\%) & 100.0 & 54.42 & 18.37 & 6.88 & 5.04 & 5.0 \\ 
+Stabilized (\%) & 100.0 & 77.83 & 47.43 & 23.02 & 5.88 & 0 \\ \bottomrule
+\end{tabular}
+\end{table}
 \end{document}
